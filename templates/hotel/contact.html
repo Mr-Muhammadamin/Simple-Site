@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Contact Page {% endblock title %}
+
+{% block content %}
+    <div class="container-xxl bg-white p-0">
+        {% include 'base/spinner.html' %}
+
+        {% include 'base/navbar.html' with contact_active=True %}
+
+        {% include 'base/base_header.html' with page_name='Contact Us' %}
+
+        {% include 'base/search.html' %}
+
+        {% include 'base/contact.html' %}
+
+        {% include 'base/footer.html' %}
+      </div> 
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "shop/base.html" %}
+
+
+{% block title %}
+  Products List Page
+{% endblock title %}
+
+{% block content %}
+  <h1 class="text-center text-primary">Products List</h1>
+  <div class="row my-5">
+    {% for product in products %}
+    <div class="col-md-3 my-3">
+      <div class="card mx-auto" style="width: 18rem;">
+        {% if product.images.all %}
+        <img src="{{ product.last_image.url }}" class="card-img-top" alt="product_image">
+        {% endif %}
+        <div class="card-body">
+          <h5><span class="badge rounded-pill text-bg-primary">{{ product.category.title }}</span> {% if product.sum_discount %}<span class="badge rounded-pill text-bg-danger"> - {{ product.sum_discount }} %</span>{% endif %}</h5>
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">{{ product.description|truncatewords:5|safe }}</p>
+          {% if product.new_price %}
+          <p class="text-danger"><del>{{ product.price }} so'm</del></p>
+          <h5 class="text-dark">{{ product.new_price }} so'm</h5>
+          {% else %}
+          <h5 class="text-dark">{{ product.price }} so'm</h5>
+          {% endif %}
+          <div class="d-grid gap-2">
+            <a href="{% url 'product_detail' product.slug %}" class="btn btn-primary">Batafsil</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% include "shop/pagination.html" with page=products %}
+  </div>
+{% endblock content %}

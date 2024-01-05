@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Property List Page {% endblock title %}
+
+{% block content %}
+    <div class="container-xxl bg-white p-0">
+        {% include 'base/spinner.html' %}
+
+        {% include 'base/navbar.html' with property_active=True %}
+
+        {% include 'base/base_header.html' with page_name="Property List" %}
+
+        {% include 'base/search.html' %}
+
+        {% include 'base/property.html' %}
+
+        {% include 'base/footer.html' %}
+      </div> 
+{% endblock content %}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 60%;
+      margin: 0 auto;
+      text-align: center;
+    }
+    #customers {
+      font-family: Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    #customers td, #customers th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+    
+    #customers tr:hover {background-color: #ddd;}
+    
+    #customers th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+    }
+    .text-danger {
+      color: red;
+    }
+    .text-secondary {
+      color: blue;
+    }
+    .disabled {
+      color: gray;
+    }
+    ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  li a:hover:not(.active) {
+    background-color: #111;
+  }
+
+  .active {
+    background-color: #04AA6D;
+  }
+  </style>
+</head>
+<body>
+  {% include "blog/navbar.html" with username="Admin" test="TEST USER" %}
+  <!-- <h1>RENDER HTML</h1>
+  <p>Current Time: {{ time }}</p>
+  <p>Number: {{ number }}</p> -->
+
+
+  {% with name="John" %}
+    <h3>{{ name }}</h3>
+
+  {% endwith %}
+  <div class="container">
+    <table id="customers">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for product in data reversed %}
+        <tr class="{% if forloop.last %} text-danger {% elif forloop.revcounter == number %} disabled {% else %} text-secondary {% endif %}">
+          <td>{{ forloop.revcounter }}</td>
+          <td>{{ product.name|upper }}</td>
+          <td>{{ product.price }} $</td>
+          <td>{{ product.quantity }} count</td>
+        </tr>
+        {% empty %}
+        <tr>
+          <td colspan="3">No Products Yet</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

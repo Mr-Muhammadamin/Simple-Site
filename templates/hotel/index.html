@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Main Page {% endblock title %}
+
+{% block content %}
+    <div class="container-xxl bg-white p-0">
+        {% include 'base/spinner.html' %}
+
+        {% include 'base/navbar.html' with home_active=True %}
+
+        {% include 'base/header.html' %}
+
+        {% include 'base/search.html' %}
+
+        {% include 'base/category.html' %}
+
+        {% include 'base/about.html' %}
+
+        {% include 'base/property.html' %}
+
+        {% include 'base/call_to_action.html' %}
+
+        {% include 'base/team.html' %}
+
+        {% include 'base/testimonial.html' %}
+
+        {% include 'base/footer.html' %}
+      </div> 
+{% endblock content %}

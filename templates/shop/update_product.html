@@ -1,0 +1,22 @@
+{% extends "shop/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+  Products Update Page
+{% endblock title %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-6 offset-3">
+      <h1 class="text-center text-primary">Product Update</h1>
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Update</button>
+      </form>
+      <!-- {% for product in products %}
+        <img src="{{ product.image.url }}" alt="">
+      {% endfor %} -->
+    </div>
+  </div>
+{% endblock content %}
