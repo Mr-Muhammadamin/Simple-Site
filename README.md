@@ -1,0 +1,2 @@
+# Simple-Site
+Django Project
